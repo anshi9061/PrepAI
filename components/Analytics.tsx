@@ -6,6 +6,12 @@ import {
     Calendar, Filter, ChevronDown, CheckCircle, Clock, BookOpen, Search 
 } from 'lucide-react';
 import { getProgressAnalytics, getQuizHistory } from '../services/mockBackend';
+
+// TODO: Step 1.5 - Replace with real API calls
+// import { api } from '../services/api';
+// TODO: Step 2.3 - Add real-time analytics updates
+// TODO: Step 3.1 - Add advanced analytics and insights
+// TODO: Step 3.4 - Add performance comparison and benchmarking
 import { ProgressDataPoint, QuizAttemptDetailed } from '../types';
 
 const Analytics: React.FC = () => {
@@ -24,6 +30,12 @@ const Analytics: React.FC = () => {
             if (timeFilter === 'WEEK') startDate = now - 7 * 24 * 60 * 60 * 1000;
             if (timeFilter === 'MONTH') startDate = now - 30 * 24 * 60 * 60 * 1000;
 
+            // TODO: Step 1.5 - Replace with authenticated API calls
+            // const [chartData, listData] = await Promise.all([
+            //     api.getProgressAnalytics({ userId: user.id, startDate }),
+            //     api.getQuizHistory({ userId: user.id, limit: 20 })
+            // ]);
+            
             const [chartData, listData] = await Promise.all([
                 getProgressAnalytics({ userId: 'user_demo', startDate }),
                 getQuizHistory({ userId: 'user_demo', limit: 20 })
@@ -31,6 +43,10 @@ const Analytics: React.FC = () => {
 
             setProgressData(chartData);
             setHistory(listData);
+            
+            // TODO: Step 2.3 - Add real-time updates via WebSocket
+            // TODO: Step 3.1 - Add predictive analytics and recommendations
+            
             setLoading(false);
         };
         load();

@@ -9,12 +9,25 @@ import ImageStudio from './components/ImageStudio';
 import RankDetails from './components/RankDetails';
 import { LayoutDashboard, BookOpen, PenTool, BarChart2, LogOut, Hexagon, Star } from 'lucide-react';
 
+// TODO: Step 1.3 - Add authentication context and user management
+// TODO: Step 1.4 - Replace hardcoded user with real authentication
+// TODO: Step 2.1 - Add loading states and error boundaries
+// TODO: Step 3.2 - Add subscription management and premium features
+
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<AppView>(AppView.DASHBOARD);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // TODO: Step 1.3 - Replace with real authentication state from AuthContext
   // Simple Onboarding State check (in a real app, use local storage)
   const [hasOnboarded, setHasOnboarded] = useState(true);
+  
+  // TODO: Step 1.4 - Add user state management
+  // const { user, isAuthenticated, logout } = useAuth();
+  
+  // TODO: Step 2.1 - Add loading and error states
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState<string | null>(null);
 
   const renderView = () => {
     switch (currentView) {
@@ -79,6 +92,7 @@ const App: React.FC = () => {
         </div>
 
         <div className="absolute bottom-0 w-full p-8 border-t border-gray-100">
+             {/* TODO: Step 1.4 - Connect to real logout functionality */}
              <button className="flex items-center space-x-2 text-gray-400 hover:text-red-500 transition-colors">
                 <LogOut size={18} />
                 <span className="text-sm font-medium">Log Out</span>

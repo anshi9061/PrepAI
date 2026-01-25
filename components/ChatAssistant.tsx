@@ -1,6 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 import { getChatResponse } from '../services/geminiService';
+
+// TODO: Step 1.6 - Move AI calls to backend proxy for security
+// TODO: Step 2.5 - Add conversation history persistence
+// TODO: Step 3.5 - Add context-aware responses based on user progress
+// TODO: Step 4.1 - Add voice input/output capabilities
 import { ChatMessage } from '../types';
 
 const ChatAssistant: React.FC = () => {
@@ -26,6 +31,14 @@ const ChatAssistant: React.FC = () => {
     setInput('');
     setIsThinking(true);
 
+    // TODO: Step 1.6 - Replace with backend API call for security
+    // const responseText = await api.sendChatMessage({
+    //     message: userMsg.text,
+    //     history: messages,
+    //     userId: user.id,
+    //     context: currentQuizContext
+    // });
+    
     // Prepare history for API
     const history = messages.map(m => ({
         role: m.role,
@@ -36,6 +49,10 @@ const ChatAssistant: React.FC = () => {
 
     const modelMsg: ChatMessage = { id: (Date.now() + 1).toString(), role: 'model', text: responseText };
     setMessages(prev => [...prev, modelMsg]);
+    
+    // TODO: Step 2.5 - Save conversation to database
+    // TODO: Step 3.5 - Update user context based on conversation
+    
     setIsThinking(false);
   };
 

@@ -4,6 +4,12 @@ import { getQuickExplanation } from '../services/geminiService';
 import { submitAnswerToBackend, submitMockTest, finishPracticeSession } from '../services/mockBackend';
 import { getAllExams, getAllStates } from '../services/paperService';
 import { getTopics, getQuizQuestions, getFastQuestion, generateMockTest, generateDailyChallenge } from '../services/quizService';
+
+// TODO: Step 1.5 - Replace mock services with real API calls
+// import { api } from '../services/api';
+// TODO: Step 2.2 - Add intelligent question selection based on user performance
+// TODO: Step 2.4 - Add adaptive difficulty and personalized learning paths
+// TODO: Step 3.3 - Add offline support and question caching
 import { EXAM_PATTERNS } from '../constants';
 import { 
     CheckCircle, XCircle, Zap, ArrowRight, RotateCcw, AlertCircle, Loader2, 
@@ -206,6 +212,9 @@ const Quiz: React.FC<QuizProps> = ({ isDailyChallenge = false }) => {
   };
 
   const startPracticeQuiz = async (topic: Topic) => {
+      // TODO: Step 2.2 - Add intelligent question selection based on user performance
+      // TODO: Step 2.4 - Implement adaptive difficulty
+      
       // 1. Reset State
       setSelectedTopic(topic);
       setQuestions([]);
@@ -214,6 +223,15 @@ const Quiz: React.FC<QuizProps> = ({ isDailyChallenge = false }) => {
       setIsGenerating(true);
 
       try {
+          // TODO: Step 1.5 - Replace with authenticated API call
+          // const fullQuestions = await api.getQuizQuestions({
+          //     examId: selectedExam!.id,
+          //     subjectId: selectedSubject || "General",
+          //     topicId: topic.id,
+          //     userId: user.id,
+          //     count: 10
+          // });
+          
           const fullQuestions = await getQuizQuestions(selectedExam!.id, selectedSubject || "General", topic.name);
           
           if (fullQuestions && fullQuestions.length > 0) {
@@ -230,6 +248,7 @@ const Quiz: React.FC<QuizProps> = ({ isDailyChallenge = false }) => {
       } catch (e) {
           console.error(e);
           setToastMessage("Connection error.");
+          // TODO: Step 2.1 - Add proper error handling and retry logic
       } finally {
           setIsGenerating(false);
       }
@@ -281,6 +300,14 @@ const Quiz: React.FC<QuizProps> = ({ isDailyChallenge = false }) => {
     setIsSubmitting(true);
     const currentQ = questions[currentQuestionIdx];
 
+    // TODO: Step 1.5 - Replace with real API call
+    // const response = await api.submitAnswer({
+    //     userId: user.id,
+    //     questionId: currentQ.id,
+    //     selectedOptionIdx: selectedOption,
+    //     sessionId: currentSessionId
+    // });
+    
     const response = await submitAnswerToBackend({
         userId: "user_demo",
         questionId: currentQ.id,
@@ -304,6 +331,8 @@ const Quiz: React.FC<QuizProps> = ({ isDailyChallenge = false }) => {
             isCorrect: response.isCorrect,
             difficulty: currentQ.difficulty
         }]);
+        
+        // TODO: Step 2.3 - Update user performance analytics in real-time
     }
     setIsSubmitting(false);
   };

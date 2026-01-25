@@ -1,5 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { generateConceptImage, editStudyImage } from '../services/geminiService';
+
+// TODO: Step 1.6 - Move AI image generation to backend proxy
+// TODO: Step 2.6 - Add image storage and management system
+// TODO: Step 3.6 - Add collaborative image editing features
+// TODO: Step 4.2 - Add AI-powered diagram recognition and enhancement
 import { Image, Wand2, Upload, Eraser } from 'lucide-react';
 
 const ImageStudio: React.FC = () => {
@@ -14,10 +19,21 @@ const ImageStudio: React.FC = () => {
         if (!prompt) return;
         setIsLoading(true);
         try {
+            // TODO: Step 1.6 - Replace with backend API call
+            // const base64 = await api.generateImage({
+            //     prompt,
+            //     resolution,
+            //     userId: user.id
+            // });
+            
             const base64 = await generateConceptImage(prompt, resolution);
-            if (base64) setImageSrc(base64);
+            if (base64) {
+                setImageSrc(base64);
+                // TODO: Step 2.6 - Save generated image to user's gallery
+            }
         } catch (e) {
             alert('Generation failed. Check API Key.');
+            // TODO: Step 2.1 - Add proper error handling
         }
         setIsLoading(false);
     };

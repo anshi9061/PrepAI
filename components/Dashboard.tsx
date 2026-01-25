@@ -4,6 +4,11 @@ import { USER_NAME } from '../constants';
 import { AppView, UserAnalytics, QuizAttemptDetailed } from '../types';
 import { getDashboardAnalytics, getQuizHistory } from '../services/mockBackend';
 
+// TODO: Step 1.5 - Replace with real API calls to backend
+// import { getDashboardAnalytics, getQuizHistory } from '../services/api';
+// TODO: Step 2.3 - Add real-time analytics updates
+// TODO: Step 3.1 - Add performance metrics and caching
+
 interface DashboardProps {
   changeView: (view: AppView) => void;
 }
@@ -16,6 +21,12 @@ const Dashboard: React.FC<DashboardProps> = ({ changeView }) => {
   useEffect(() => {
     const loadData = async () => {
         try {
+            // TODO: Step 1.5 - Replace with authenticated API calls
+            // const [stats, history] = await Promise.all([
+            //     api.getDashboardAnalytics(user.id),
+            //     api.getQuizHistory({ userId: user.id, limit: 3 })
+            // ]);
+            
             // Parallel Fetch
             const [stats, history] = await Promise.all([
                 getDashboardAnalytics(),
@@ -25,6 +36,7 @@ const Dashboard: React.FC<DashboardProps> = ({ changeView }) => {
             setRecentQuizzes(history);
         } catch (e) {
             console.error("Failed to load dashboard data", e);
+            // TODO: Step 2.1 - Add proper error handling and user feedback
         } finally {
             setLoading(false);
         }

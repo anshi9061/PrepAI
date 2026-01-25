@@ -6,11 +6,15 @@ import {
     Calendar, Layers, Globe, Map, Settings, Pill, Sprout, Briefcase, Users
 } from 'lucide-react';
 import { ExamCategory, ExamProfile, ExamLevel } from '../types';
-import { 
-    getExamLevels, getAllStates, getCategoriesForContext, 
+import { getExamLevels, getAllStates, getCategoriesForContext, 
     getExamsByContext, getAvailableYears, getPapersForYear, 
     getAllExams, getCategoryIcon 
 } from '../services/paperService';
+
+// TODO: Step 1.5 - Replace with real API calls for papers management
+// TODO: Step 2.7 - Add real file upload and download functionality
+// TODO: Step 3.7 - Add search and filtering capabilities
+// TODO: Step 4.3 - Add OCR for paper digitization
 
 const PastPapers: React.FC = () => {
     // --- STATE ---
@@ -208,10 +212,20 @@ const PastPapers: React.FC = () => {
         // Auto-select latest year
         if (!selectedYear && years.length > 0) setSelectedYear(years[0]);
 
+        // TODO: Step 1.5 - Replace with real API call
+        // const papers = selectedYear ? await api.getPapers({
+        //     examId: selectedExam!.id,
+        //     year: selectedYear,
+        //     subject: selectedSubject
+        // }) : [];
+        
         const papers = selectedYear ? getPapersForYear(selectedExam!.id, selectedYear, selectedSubject || undefined) : [];
 
         return (
             <div className="animate-fade-in space-y-6">
+                {/* TODO: Step 2.7 - Add real download functionality with authentication */}
+                {/* TODO: Step 3.7 - Add advanced search and filtering */}
+                {/* TODO: Step 4.3 - Add paper preview and OCR capabilities */}
                 {/* Header */}
                 <div className="glass-panel p-6 rounded-2xl bg-gradient-to-br from-white to-blue-50/30 border-blue-100">
                     <h2 className="text-3xl font-display font-bold text-navyDark">{selectedExam!.name}</h2>
