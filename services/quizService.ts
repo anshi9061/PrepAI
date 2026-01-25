@@ -2,7 +2,13 @@ import { MOCK_QUESTIONS, TOPIC_DATABASE, EXAM_PATTERNS } from "../constants";
 import { Question, Topic, ExamPattern } from "../types";
 import { generateAIQuizQuestions } from "./geminiService";
 
+// TODO: Step 1.5 - Replace with real database queries
+// TODO: Step 2.2 - Implement intelligent question selection algorithm
+// TODO: Step 2.4 - Add adaptive difficulty based on user performance
+// TODO: Step 3.3 - Add question caching and optimization
+
 // --- CACHE ---
+// TODO: Step 1.7 - Replace with Redis caching
 const CACHE_TTL = 30 * 60 * 1000; // 30 Minutes
 const questionCache = new Map<string, { data: Question[], timestamp: number }>();
 

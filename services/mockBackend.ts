@@ -1,6 +1,12 @@
 import { Question, UserAnalytics, QuizAttemptDetailed, ProgressDataPoint, QuizHistoryFilter, MockTestResult, PracticeResult, SectionScore, RankData } from '../types';
 
+// TODO: Step 1.1 - Replace this entire file with real database operations
+// TODO: Step 1.2 - Implement proper user authentication and session management
+// TODO: Step 2.3 - Add real-time analytics processing
+// TODO: Step 3.1 - Add advanced analytics and machine learning insights
+
 // --- IN-MEMORY DATABASE SIMULATION ---
+// TODO: Step 1.1 - Remove all mock data and replace with PostgreSQL + Prisma
 
 // 1. User Attempts Table
 interface AttemptRecord {

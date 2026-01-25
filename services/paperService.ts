@@ -1,7 +1,13 @@
 import { EXAM_DATABASE, STATES_LIST } from "../constants";
 import { ExamProfile, PaperResource, ExamCategory, ExamLevel } from "../types";
 
+// TODO: Step 1.5 - Replace with real database queries
+// TODO: Step 2.7 - Implement real file storage and management
+// TODO: Step 3.7 - Add search and filtering capabilities
+// TODO: Step 4.3 - Add OCR and paper digitization features
+
 // --- BACKEND LOGIC SIMULATION ---
+// TODO: Step 1.5 - Remove static data and connect to database
 
 export const getExamLevels = () => [
     { id: 'National', label: 'All India Exams', icon: 'Globe', desc: 'NEET, JEE, UPSC, & More' },
