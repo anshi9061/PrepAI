@@ -1,20 +1,64 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# PREP AI
 
-# Run and deploy your AI Studio app
+AI-powered exam preparation platform for Indian competitive exams (NEET, JEE, KEAM, CLAT, CBSE boards, and more).
 
-This contains everything you need to run your app locally.
+Built with **Expo** (React Native) for iOS, Android, and Web from a single codebase.
 
-View your app in AI Studio: https://ai.studio/apps/drive/19TIJWEcayjjHGG02tKyVU5J9xId4Cjvf
+## Tech Stack
 
-## Run Locally
+- **Mobile/Web**: Expo SDK 52 + React Native + Expo Router
+- **Styling**: NativeWind (Tailwind CSS for React Native)
+- **Backend**: Supabase (Auth, PostgreSQL, Storage, Edge Functions)
+- **AI**: Google Gemini API (proxied through Supabase Edge Functions)
+- **State**: Zustand
 
-**Prerequisites:**  Node.js
+## Getting Started
 
+### Prerequisites
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- Node.js 18+
+- Expo CLI (`npm install -g expo-cli`)
+- A [Supabase](https://supabase.com) project (free tier works)
+
+### Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Copy environment template and add your Supabase keys
+cp .env.example .env.local
+
+# Start the dev server
+npx expo start
+```
+
+Press `i` for iOS simulator, `a` for Android emulator, or `w` for web.
+
+## Project Structure
+
+```
+├── app/                 # Expo Router screens
+│   ├── (auth)/          # Login / Register
+│   ├── (tabs)/          # Main tab navigation
+│   └── _layout.tsx      # Root layout (auth guard)
+├── shared/              # Reusable business logic
+│   ├── types.ts         # TypeScript domain types
+│   ├── constants/       # Exam database, topics, patterns
+│   ├── services/        # Quiz logic, paper catalog
+│   └── ai/              # AI prompt templates
+├── lib/                 # Client configs
+│   ├── supabase.ts      # Supabase client
+│   └── store.ts         # Zustand stores
+├── components/          # Reusable UI components
+└── assets/              # Images, fonts
+```
+
+## Features
+
+- Quiz engine with practice mode, mock tests, and daily challenges
+- 50+ Indian exams: NEET, JEE, KEAM, CLAT, CBSE, state boards
+- Analytics dashboard with progress tracking
+- Past papers browser
+- AI chat assistant (coming soon)
+- Cross-platform: iOS, Android, and Web from one codebase
